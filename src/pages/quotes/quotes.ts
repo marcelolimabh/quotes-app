@@ -1,25 +1,69 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
 
-/**
- * Generated class for the QuotesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {  NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
-@IonicPage()
+import { Quote } from './../../data/quote.interface';
+
+
+
+
 @Component({
   selector: 'page-quotes',
   templateUrl: 'quotes.html',
 })
-export class QuotesPage {
+export class QuotesPage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+
+  quoteGroup: { category: string, quotes: Quote[], icon: string };
+
+
+  //Usuar o Onit ao inves do ionViewDidLoad
+  /**
+   * no método Onit o sistema executa antes de renderizar a tela
+   * já no ionViewDidLoad ele renderiza a tela primeiro e depois executa o método
+   */
+  ngOnInit(): void {
+    this.quoteGroup = this.navParams.data;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesPage');
+  constructor( private navParams: NavParams, private alertCtrl: AlertController ) {
   }
+
+  //ionViewDidLoad(){
+
+  //this.quoteGroup = this.navParams.data;
+  //use the operator Elvis (?) in templte to no crash app in started
+  // }
+
+  onAddToFavorite(selectedQuote: Quote) {
+
+    const alert = this.alertCtrl.create({
+      title: 'Add Quote',
+      subTitle: 'Are you sure',
+      message: 'Are you sure you want to add the quote?',
+      buttons:[{
+        text: 'Yes, go ahead',
+        handler: () => {
+          console.log('Ok');
+        }
+      },
+    {
+      text: 'No, I changed my mind',
+      role: 'cancel',
+      handler: ()=>{
+        console.log('Cancelled!');
+
+      }
+
+    }]
+    });
+
+    alert.present();
+
+  }
+
 
 }

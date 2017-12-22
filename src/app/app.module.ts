@@ -11,6 +11,7 @@ import { MyApp } from './app.component';
 import { SettingsPage } from '../pages/settings/settings';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { QuotesPage } from '../pages/quotes/quotes';
+import { QuoteService } from '../services/quote.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { QuotesPage } from '../pages/quotes/quotes';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    QuoteService
   ]
 })
 export class AppModule {}

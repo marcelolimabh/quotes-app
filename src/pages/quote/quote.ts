@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 
 
@@ -17,8 +17,8 @@ export class QuotePage {
   constructor(private viewCtrl: ViewController, public navParams: NavParams) {
   }
 
-  onClose(){
-    this.viewCtrl.dismiss();
+  onClose(remove: boolean = false){
+    this.viewCtrl.dismiss(remove);
   }
 
   ionViewDidLoad(){

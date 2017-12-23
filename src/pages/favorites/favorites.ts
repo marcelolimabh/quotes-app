@@ -4,6 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { QuoteService } from './../../services/quote.service';
 import { Quote } from './../../data/quote.interface';
 import { QuotePage } from './../quote/quote';
+//import quotes from '../../data/quotes';
 
 
 
@@ -29,6 +30,10 @@ export class FavoritesPage {
   onViewQuote(quote:Quote){
     const modal = this.modalCtrl.create(QuotePage, quote);
     modal.present();
+    modal.onDidDismiss((remove)=>{
+      this.quoteService.removeQuoteFromFavorites(quote);
+      this.quotes = this.quoteService.getFavoriteQuotes();
+    });
   }
 
 

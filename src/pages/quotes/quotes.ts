@@ -39,7 +39,7 @@ export class QuotesPage implements OnInit {
   //use the operator Elvis (?) in templte to no crash app in started
   // }
 
-  onAddToFavorite(selectedQuote: Quote) {
+  onAddToFavorites(selectedQuote: Quote) {
 
     const alert = this.alertCtrl.create({
       title: 'Add Quote',
@@ -64,6 +64,14 @@ export class QuotesPage implements OnInit {
 
     alert.present();
 
+  }
+
+  onRemoveFromFavorites(quote: Quote){
+      this.quoteService.removeQuoteFromFavorites(quote);
+  }
+
+  isFavorite(quote: Quote){
+    return this.quoteService.isQuoteFavorite(quote);
   }
 
 

@@ -9,7 +9,6 @@ export class QuoteService {
 
   addQuoteToFavorites(quote: Quote){
     this.favoriteQuotes.push(quote);
-    console.log(quote);
   }
 
   removeQuoteFromFavorites(quote: Quote){
@@ -22,5 +21,11 @@ export class QuoteService {
 
   getFavoriteQuotes(){
     return this.favoriteQuotes.slice();
+  }
+
+  isQuoteFavorite(quote: Quote){
+    return this.favoriteQuotes.find((quoteEl: Quote) =>{
+      return quoteEl.id == quote.id;
+    });
   }
 }

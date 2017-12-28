@@ -16,12 +16,13 @@ import { QuoteService } from '../services/quote.service';
 @NgModule({
   declarations: [
     MyApp,
+    TabsPage,
     LibraryPage,
     SettingsPage,
     QuotesPage,
     QuotePage,
-    FavoritesPage,
-    TabsPage
+    FavoritesPage
+
 
   ],
   imports: [
@@ -31,13 +32,13 @@ import { QuoteService } from '../services/quote.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    TabsPage,
     LibraryPage,
     SettingsPage,
     QuotesPage,
     QuotePage,
-    FavoritesPage,
-    TabsPage
-  ],
+    FavoritesPage
+    ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -5,6 +5,8 @@ import { QuoteService } from './../../services/quote.service';
 import { Quote } from './../../data/quote.interface';
 import { QuotePage } from './../quote/quote';
 //import quotes from '../../data/quotes';
+import { SettingsService } from './../../services/settings.service';
+
 
 
 
@@ -19,7 +21,7 @@ export class FavoritesPage {
   quotes: Quote[];
 
 
-  constructor(private quoteService: QuoteService, private modalCtrl: ModalController) {
+  constructor(private quoteService: QuoteService, private modalCtrl: ModalController, private settingsService: SettingsService) {
   }
 
   ionViewWillEnter() {
@@ -44,6 +46,10 @@ export class FavoritesPage {
       return quoteEl.id == quote.id;
     });
     this.quotes.splice(position, 1);
+  }
+
+  isAltBackground(){
+    return this.settingsService.isAltBackground();
   }
 
 }
